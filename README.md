@@ -4,10 +4,14 @@ Oficial documentation [here](https://www.consul.io/docs/agent)
 
 ### About
 This small projects will:
-    - Uploading the agent
-    - Seeing the members of the cluster
-    - DNS searching
-    - Consul API access
+
+- Uploading the agent
+
+- Seeing the members of the cluster
+
+- DNS searching
+
+- Consul API access
 
 ### Useful commands
 > Run all these commands inside the container `docker exec -it consul* sh`
