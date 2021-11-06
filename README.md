@@ -27,13 +27,19 @@ Generating encrypted key: `consul keygen`
 
 Raising the consul on server mode: `consul agent -server -bootstrap-expect=3 -node=consulserver01 -bind=<container_ip> -data-dir=/var/lib/consul -config-dir=/etc/consul.d`
     - container_ip: inside the container, run `ifconfig`
+
     - Expecting 3 servers
+
     - Node will be consulserver01
+
     - data-dir: Dir where consul will host it´s files
+
     - config-dir: Dir where consul will host it´s conf files
+
 To make 2 consuls servers communicate with each other: `consul join <other_container_ip>` 
 Raising the consul on server mode using server.json:
     - `docker exec -it consulserver02 sh`
+
     - `consul agent -config-dir=/etc/consul.d`
 
 #### Client
@@ -41,9 +47,13 @@ Raising the consul on server mode using server.json:
 
 Raising the consul on client mode: `consul agent -client -node=consulserver01 -bind=<container_ip> -data-dir=/var/lib/consul -config-dir=/etc/consul.d`
     - container_ip: inside the container, run `ifconfig`
+
     - Node will be consulclient01
+
     - data-dir: Dir where consul will host it´s files
+
     - config-dir: Dir where consul will host it´s conf files
+    
 To make 2 consuls communicate with each other: `consul join <other_container_ip>`
 
 #### Service Discovery
