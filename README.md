@@ -26,34 +26,34 @@ Generating encrypted key: `consul keygen`
 > Run all these commands inside the container `docker exec -it consulserver* sh`
 
 Raising the consul on server mode: `consul agent -server -bootstrap-expect=3 -node=consulserver01 -bind=<container_ip> -data-dir=/var/lib/consul -config-dir=/etc/consul.d`
-    - container_ip: inside the container, run `ifconfig`
+- container_ip: inside the container, run `ifconfig`
 
-    - Expecting 3 servers
+- Expecting 3 servers
 
-    - Node will be consulserver01
+- Node will be consulserver01
 
-    - data-dir: Dir where consul will host it´s files
+- data-dir: Dir where consul will host it´s files
 
-    - config-dir: Dir where consul will host it´s conf files
+- config-dir: Dir where consul will host it´s conf files
 
 To make 2 consuls servers communicate with each other: `consul join <other_container_ip>` 
 Raising the consul on server mode using server.json:
-    - `docker exec -it consulserver02 sh`
+- `docker exec -it consulserver02 sh`
 
-    - `consul agent -config-dir=/etc/consul.d`
+- `consul agent -config-dir=/etc/consul.d`
 
 #### Client
 > Run all these commands inside the container `docker exec -it consulclient* sh`
 
 Raising the consul on client mode: `consul agent -client -node=consulserver01 -bind=<container_ip> -data-dir=/var/lib/consul -config-dir=/etc/consul.d`
-    - container_ip: inside the container, run `ifconfig`
+- container_ip: inside the container, run `ifconfig`
 
-    - Node will be consulclient01
+- Node will be consulclient01
 
-    - data-dir: Dir where consul will host it´s files
+- data-dir: Dir where consul will host it´s files
 
-    - config-dir: Dir where consul will host it´s conf files
-    
+- config-dir: Dir where consul will host it´s conf files
+
 To make 2 consuls communicate with each other: `consul join <other_container_ip>`
 
 #### Service Discovery
