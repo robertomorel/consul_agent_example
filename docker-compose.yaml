@@ -1,0 +1,49 @@
+# Building a cluster with 3 servers
+
+version: '3'
+
+services:
+  consulserver01:
+    image: consul:1.10
+    container_name: consulserver01
+    hostname: consulserver01
+    command: ['tail', '-f', '/dev/null'] # To keep the process running: /dev/null
+    volumes:
+      - ./servers/server01:/etc/consul.d # Has some conf. of the server when raised
+    ports:
+      - "8500:8500"  
+
+  consulserver02:
+    image: consul:1.10
+    container_name: consulserver02
+    hostname: consulserver02
+    command: ['tail', '-f', '/dev/null'] # To keep the process running: /dev/null
+    volumes:
+      - ./servers/server02:/etc/consul.d # Has some conf. of the server when raised
+
+  consulserver03:
+    image: consul:1.10
+    container_name: consulserver03
+    hostname: consulserver03
+    command: ['tail', '-f', '/dev/null'] # To keep the process running: /dev/null  
+    volumes:
+      - ./servers/server03:/etc/consul.d # Has some conf. of the server when raised
+
+  # This client will host one service (service.json)
+  consulclient01:
+    image: consul:1.10
+    container_name: consulclient01
+    hostname: consulclient01
+    command: ['tail', '-f', '/dev/null']
+    volumes:
+      - ./clients/consul01:/etc/consul.d
+      
+  # This client will host one service (service.json)
+  consulclient02:
+    image: consul:1.10
+    container_name: consulclient02
+    hostname: consulclient02
+    command: ['tail', '-f', '/dev/null']
+    volumes:
+      - ./clients/consul02:/etc/consul.d
+

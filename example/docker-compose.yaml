@@ -1,0 +1,12 @@
+version: '3'
+
+services:
+  consul01:
+    image: consul:1.10
+    container_name: consul01
+    hostname: consul01
+    command: ['tail', '-f', '/dev/null'] # To keep the process running: /dev/null
+
+
+## Criating the container: docker-compose up -d
+## Entering in the container: docker exec -it consul01 sh 
